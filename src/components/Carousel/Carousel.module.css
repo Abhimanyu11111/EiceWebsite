@@ -1,0 +1,30 @@
+.dots {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: #c5cfdd;
+    cursor: pointer;
+    transition:
+      width 240ms ease,
+      background 240ms ease;
+  }
+
+  .dotActive {
+    width: 22px;
+    background: var(--navy);
+  }
+}

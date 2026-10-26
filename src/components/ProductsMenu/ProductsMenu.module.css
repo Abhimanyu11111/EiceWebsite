@@ -1,0 +1,276 @@
+/*
+ * Mega menu under "Products". Columns measured from the design:
+ * intro 279 | 32 | catalog 715 | 40 | featured card 236 | 25  = 1327px.
+ */
+.menu {
+  display: grid;
+  width: min(calc(100vw - 4px), 1327px);
+  grid-template-columns: 279px 715px 236px;
+  column-gap: 32px;
+  padding-right: 25px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 207, 221, 0.6);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.14);
+}
+
+.menu > .featured {
+  margin-left: 8px;
+}
+
+/* ---------- Intro (left) ---------- */
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 27px 20px 0 29px;
+  background: url("/assets/images/cards/light-blue-card-bg.png") center top / cover no-repeat;
+}
+
+.eyebrow,
+.label {
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.heading {
+  max-width: 215px;
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.introText {
+  max-width: 215px;
+  margin-top: 19px;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.exploreAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.exploreArrow {
+  width: 18px;
+  height: 17px;
+  transition: transform 200ms ease;
+}
+
+.exploreAll:hover .exploreArrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Catalog (middle) ---------- */
+
+.row {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.rowMain {
+  display: grid;
+  grid-template-columns: 358px 1fr;
+  padding: 26px 0 16px;
+}
+
+.leftColumn .list {
+  margin-right: 0;
+  padding-right: 61px;
+  border-right: 1px solid var(--border-soft);
+}
+
+.rightColumn {
+  padding-left: 74px;
+}
+
+.rowSecurity {
+  padding: 20px 0 26px;
+}
+
+.rowSync {
+  padding: 16px 0 38px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.list .item {
+  min-height: 76px;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 297px 1fr;
+  column-gap: 135px;
+  margin-top: 19px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 48px 1fr 15px;
+  align-items: center;
+  column-gap: 14px;
+  color: inherit;
+}
+
+.list .item {
+  align-items: start;
+}
+
+.icon {
+  border-radius: 8px;
+  transition: transform 250ms ease;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1px;
+}
+
+.pair .text {
+  padding-top: 0;
+}
+
+.name {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  transition: color 200ms ease;
+}
+
+.description {
+  color: var(--body);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.arrow {
+  width: 15px;
+  height: 14px;
+  color: var(--navy);
+  transition: transform 200ms ease;
+}
+
+/* Arrow sits on the row's vertical centre (row is 76px tall in the main group). */
+.list .arrow {
+  margin-top: 31px;
+}
+
+.item:hover .name {
+  color: var(--navy);
+}
+
+.item:hover .icon {
+  transform: scale(1.06);
+}
+
+.item:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Featured card (right) ---------- */
+
+.featured {
+  display: flex;
+  height: 642px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: start;
+  margin-top: 27px;
+  padding: 24px 20px 0;
+  border-radius: 12px;
+  color: #fff;
+  background: url("/assets/images/cards/eice-rise-card-bg.png") center top / 100% 100% no-repeat;
+}
+
+.featuredLabel {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.featuredName {
+  margin-top: 21px;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+.featuredText {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.points li {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 20.5px;
+  white-space: nowrap;
+}
+
+.points li::before {
+  content: "✓";
+}
+
+.learnMore {
+  display: inline-flex;
+  width: 196px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 35px;
+  border-radius: 6px;
+  color: var(--navy);
+  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.learnMore:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.learnMoreArrow {
+  width: 18px;
+  height: 17px;
+}

@@ -1,0 +1,7 @@
+/* 1216px content column, starting at x=112 on the 1440px design. */
+.container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 16px;
+}

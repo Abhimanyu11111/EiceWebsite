@@ -1,0 +1,505 @@
+.footer {
+  background: #eef2f7;
+}
+
+/* Columns start at x = 112 / 426 / 660 / 908 / 1125 on the 1440px design. */
+.top {
+  display: grid;
+  grid-template-columns: 314px 234px 248px 217px 1fr;
+  padding-top: 50px;
+}
+
+.brand {
+  display: flex;
+  width: 266px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about {
+  margin-top: 9px;
+  color: var(--body);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.socials a {
+  display: block;
+}
+
+.rule {
+  width: 263px;
+  height: 1px;
+  margin: 20px 0 0;
+  border: 0;
+  background: #d1e0f0;
+}
+
+.subscribeTitle {
+  margin-top: 22px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.subscribeText {
+  margin-top: 9px;
+  color: var(--body);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.subscribeForm {
+  display: flex;
+  width: 266px;
+  height: 55px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0 9px 0 21px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: #fff;
+}
+
+.subscribeForm input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+}
+
+.subscribeForm input::placeholder {
+  color: var(--muted);
+}
+
+.subscribeForm button {
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.column {
+  display: flex;
+  height: 337px;
+  flex-direction: column;
+  padding-right: 28px;
+}
+
+.column + .column {
+  padding-left: 22px;
+  border-left: 1px solid var(--border-soft);
+}
+
+/* A button so phones can use it as an accordion toggle; looks and acts like a plain heading above 600px. */
+.heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  background: none;
+  cursor: default;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.headingChevron {
+  display: none;
+}
+
+.column ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  transition: color 160ms ease;
+}
+
+.link:hover {
+  color: var(--navy);
+}
+
+.chevron {
+  width: 7px;
+  height: 13px;
+  flex: 0 0 auto;
+  color: var(--navy);
+}
+
+.products ul {
+  gap: 20px;
+}
+
+/* Product chevrons sit on the name line, not the middle of the item. */
+.products .link {
+  align-items: flex-start;
+}
+
+.products .chevron {
+  margin-top: 4px;
+}
+
+.productName,
+.productTagline {
+  display: block;
+}
+
+.productTagline {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.services ul {
+  gap: 22px;
+}
+
+.industries ul {
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.industries .link {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.explore {
+  padding-right: 23px;
+}
+
+.explore ul {
+  gap: 22px;
+}
+
+.explore .link {
+  font-weight: 400;
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-right: -3px;
+  margin-bottom: 11px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.viewAllArrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 160ms ease;
+}
+
+.viewAll:hover .viewAllArrow {
+  transform: translateX(3px);
+}
+
+/*
+ * Wave image (2880 x 496) has a transparent top, so the light footer shows through the curve.
+ * It always spans the full width and is pinned to the top so the curve is never cropped; the
+ * section grows with it on wide screens (248px at 1440) and the content stays at the bottom.
+ */
+.presence {
+  --wave-height: max(248px, calc(100vw * 496 / 2880));
+  /* Trims the empty band between the curve (~15% down the wave) and the title to ~44px on wide screens. */
+  --presence-trim: max(0px, var(--wave-height) * 0.845 - 200px);
+
+  height: calc(var(--wave-height) - var(--presence-trim));
+  margin-top: 2px;
+  background: url("/assets/images/world-map-wave-bg.png") center top / max(100%, 1440px) auto no-repeat;
+}
+
+.presence > div {
+  padding-top: calc(var(--wave-height) - var(--presence-trim) - 156px);
+}
+
+.presenceTitle {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-left: 3px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.pin {
+  width: 16px;
+  height: 20px;
+}
+
+.presenceList {
+  display: grid;
+  grid-template-columns: 289px 370px 1fr;
+  margin-top: 21px;
+}
+
+.presenceItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.presenceItem > img {
+  margin-top: 8px;
+}
+
+.presenceName {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.presenceLine {
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.presenceName + .presenceLine {
+  margin-top: 7px;
+}
+
+.copyright {
+  height: 58px;
+  background: var(--navy-deep);
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.copyrightInner {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.copyrightInner > p {
+  width: 393px;
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+}
+
+.legal li + li {
+  margin-left: 26px;
+  padding-left: 26px;
+  border-left: 1px solid #4c668c;
+}
+
+.chevron {
+  transition: transform 200ms ease;
+}
+
+.link:hover .chevron {
+  transform: translateX(3px);
+}
+
+.socials a {
+  transition: transform 200ms ease;
+}
+
+.socials a:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1279px) {
+  .top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 24px;
+  }
+
+  .column {
+    height: auto;
+  }
+
+  .column + .column {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .viewAll {
+    margin: 24px 0 0;
+  }
+
+  .presence {
+    height: auto;
+    padding-bottom: 32px;
+    background-color: var(--navy-deep);
+  }
+
+  .presenceList {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .copyright {
+    height: auto;
+    padding: 16px 0;
+  }
+
+  .copyrightInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .copyrightInner > p {
+    width: auto;
+  }
+}
+
+/* Phones: link columns collapse into accordions, and the bottom bar is centred and clear of the WhatsApp button. */
+@media (max-width: 600px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 40px;
+    padding-bottom: 24px;
+  }
+
+  .brand,
+  .rule,
+  .subscribeForm {
+    width: 100%;
+  }
+
+  .brand {
+    margin-bottom: 28px;
+  }
+
+  .column {
+    padding-right: 0;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .column:last-child {
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .heading {
+    padding: 16px 0;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .headingChevron {
+    display: block;
+    width: 13px;
+    height: 7px;
+    color: var(--navy);
+    transition: transform 220ms ease;
+  }
+
+  .columnOpen .headingChevron {
+    transform: rotate(180deg);
+  }
+
+  .column ul,
+  .column .viewAll {
+    display: none;
+  }
+
+  .columnOpen ul,
+  .columnOpen .viewAll {
+    display: flex;
+  }
+
+  .column ul,
+  .products ul,
+  .services ul,
+  .industries ul,
+  .explore ul {
+    gap: 16px;
+    margin-top: 0;
+  }
+
+  .industries .link {
+    font-size: 14px;
+  }
+
+  /* No per-link arrows inside an opened accordion; the whole row is still the link. */
+  .link .chevron {
+    display: none;
+  }
+
+  .viewAll {
+    margin: 18px 0 18px;
+  }
+
+  .explore ul {
+    margin-bottom: 18px;
+  }
+
+  .presence {
+    background: var(--navy-deep);
+  }
+
+  .presence > div {
+    padding-top: 36px;
+  }
+
+  .presenceList {
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .copyright {
+    padding: 18px 0 88px;
+    text-align: center;
+  }
+
+  .copyrightInner {
+    align-items: center;
+  }
+
+  .legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+  }
+
+  .legal li + li {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: 0;
+  }
+}

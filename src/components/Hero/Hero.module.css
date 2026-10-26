@@ -1,0 +1,305 @@
+.hero {
+  position: relative;
+  height: 550px;
+  overflow: hidden;
+  background: #f8fbfd;
+}
+
+/*
+ * The artwork is 2924 x 1120 and hugs the right edge. It is 1437px wide at 1440 (the design),
+ * grows with the screen up to 1655px (~1.15x) so the globe stays near the text on wide screens,
+ * then stops growing; anything wider shows the near-white sky colour behind a soft left fade.
+ * Past 1920 it hugs the right edge of a centred 1920 column instead of the screen, so the globe
+ * stays beside the text on ultra-wide screens; its right edge then fades into the page colour.
+ * When it is taller than the section, 15% of the extra is trimmed from the top (keeps the
+ * top badge clear) and 85% from the water at the bottom.
+ */
+.imageFrame {
+  --frame-width: clamp(1437px, 100vw, 1655px);
+  --frame-inset: max(0px, (100vw - 1920px) / 2);
+
+  position: absolute;
+  z-index: 1;
+  top: calc((550px - var(--frame-width) * 1120 / 2924) * 0.15);
+  right: var(--frame-inset);
+  width: var(--frame-width);
+  aspect-ratio: 2924 / 1120;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 120px,
+    #000 calc(100% - min(var(--frame-inset), 80px)),
+    transparent
+  );
+}
+
+.image {
+  object-fit: cover;
+  object-position: right center;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding-top: 79px;
+}
+
+.badge {
+  display: inline-flex;
+  height: 32px;
+  align-items: center;
+  gap: 11px;
+  padding: 0 22px 0 14px;
+  border: 1px solid var(--cyan);
+  border-radius: 16px;
+  color: var(--navy);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18));
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    0 4px 14px rgba(1, 32, 96, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--navy);
+}
+
+.title {
+  margin-top: 19px;
+  color: var(--ink);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 78px;
+}
+
+.description {
+  max-width: 625px;
+  margin-top: 23px;
+  color: var(--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+}
+
+.actions {
+  display: flex;
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.primaryButton,
+.outlineButton {
+  display: inline-flex;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.primaryButton {
+  width: 208px;
+  color: #fff;
+  background: var(--navy);
+  box-shadow: 0 6px 14px rgba(1, 32, 96, 0.28);
+}
+
+.outlineButton {
+  width: 196px;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.3));
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    0 6px 16px rgba(1, 32, 96, 0.1);
+  transition:
+    background 180ms ease,
+    transform 200ms ease;
+}
+
+.outlineButton:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5));
+}
+
+.arrow {
+  width: 17px;
+  height: 16px;
+  transition: transform 160ms ease;
+}
+
+.primaryButton:hover .arrow,
+.outlineButton:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Entrance (plays once on load) ---------- */
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+@keyframes settleIn {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+
+.badge,
+.title,
+.description,
+.actions {
+  animation: riseIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.title {
+  animation-delay: 120ms;
+}
+
+.description {
+  animation-delay: 240ms;
+}
+
+.actions {
+  animation-delay: 360ms;
+}
+
+.image {
+  animation: settleIn 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shine that sweeps across the primary button on hover. */
+.primaryButton {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.primaryButton::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  content: "";
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+}
+
+.primaryButton:hover {
+  box-shadow: 0 10px 22px rgba(1, 32, 96, 0.34);
+  transform: translateY(-2px);
+}
+
+.primaryButton:hover::after {
+  transform: translateX(120%);
+}
+
+.outlineButton:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge,
+  .title,
+  .description,
+  .actions,
+  .image {
+    animation: none;
+  }
+}
+
+/* Small screens: the artwork sits under the copy as its own band instead of behind it. */
+@media (max-width: 900px) {
+  .hero {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .content {
+    order: 1;
+    padding-top: 40px;
+  }
+
+  .imageFrame {
+    position: relative;
+    order: 2;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: 320px;
+    margin-top: 8px;
+    aspect-ratio: auto;
+    mask-image: linear-gradient(180deg, transparent, #000 64px);
+  }
+
+  .title {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .title br {
+    display: none;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .badge {
+    padding: 0 14px 0 12px;
+    font-size: 10px;
+  }
+
+  .title {
+    margin-top: 16px;
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .description {
+    margin-top: 16px;
+  }
+
+  /* Side by side, sharing the row equally. */
+  .actions {
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .primaryButton,
+  .outlineButton {
+    width: auto;
+    height: 50px;
+    min-width: 0;
+    flex: 1;
+    gap: 8px;
+    padding: 0 8px;
+    font-size: 14px;
+  }
+
+  .arrow {
+    width: 14px;
+    height: 13px;
+  }
+
+  .imageFrame {
+    height: 260px;
+  }
+}

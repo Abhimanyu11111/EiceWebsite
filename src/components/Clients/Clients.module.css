@@ -1,0 +1,76 @@
+.clients {
+  height: 128px;
+  border-top: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.title {
+  padding-top: 21px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.logos {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding: 0 19px 0 18px;
+}
+
+@media (max-width: 900px) {
+  .clients {
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .logos {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 32px;
+  }
+}
+
+/* Phones: an even 2 x 3 grid of equal tiles instead of ragged wrapped rows. */
+@media (max-width: 600px) {
+  .clients {
+    padding-bottom: 28px;
+  }
+
+  .title {
+    padding-top: 28px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  .logos li {
+    display: flex;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border: 1px solid #eef2f7;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .logos img {
+    max-width: 100%;
+    height: auto;
+  }
+}

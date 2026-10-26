@@ -1,0 +1,189 @@
+.metrics {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: #284b7c;
+}
+
+.background {
+  object-fit: cover;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.main {
+  width: 790px;
+  padding-top: 35px;
+}
+
+.title {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 44px;
+}
+
+.description {
+  max-width: 660px;
+  margin-top: 11px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 203px 216px 186px auto;
+  margin: 27px 0 0;
+}
+
+.value {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 44px;
+}
+
+.label {
+  margin: 15px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.partnerships {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin: 29px 0;
+  padding: 63px 0 0 66px;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.partnerships > img {
+  margin-top: 1px;
+}
+
+.partnershipsTitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 39px;
+}
+
+.partnershipsText {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@media (max-width: 1279px) {
+  .metrics {
+    height: auto;
+  }
+
+  .inner {
+    flex-direction: column;
+    padding-bottom: 32px;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .partnerships {
+    margin: 32px 0 0;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/*
+ * Phones: the wide background artwork would be blown up to a blurry slice with a pale streak,
+ * so a clean navy gradient replaces it; stats become a tidy 2 x 2 grid of tiles.
+ */
+@media (max-width: 600px) {
+  .metrics {
+    background: linear-gradient(160deg, #2a4f82 0%, #163566 55%, #0d2650 100%);
+  }
+
+  .background {
+    display: none;
+  }
+
+  .main {
+    padding-top: 40px;
+  }
+
+  .title {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .stats {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .stats > div {
+    padding: 16px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .value {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .label {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .partnerships {
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .partnerships > img {
+    width: 44px;
+    height: 44px;
+    margin-top: 0;
+  }
+
+  .partnershipsTitle {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .partnershipsTitle br {
+    display: none;
+  }
+
+  .partnershipsText {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+}
