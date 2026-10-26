@@ -1,23 +1,15 @@
-import Image from "next/image";
+import { preload } from "react-dom";
 import Container from "@/components/Container/Container";
 import { ArrowRight } from "@/components/Icons/Icons";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  // The artwork is a CSS background, so tell the browser to fetch it early.
+  preload("/assets/images/hero-bg.webp", { as: "image", fetchPriority: "high" });
+
   return (
     <section className={styles.hero}>
-      <div aria-hidden="true" className={styles.imageFrame}>
-        <Image
-          alt=""
-          className={styles.image}
-          fill
-          priority
-          quality={95}
-          sizes="(max-width: 900px) 1600px, (max-width: 1440px) 1437px, min(100vw, 1655px)"
-          src="/assets/images/hero-globe.png"
-        />
-      </div>
-      <Container className={styles.content}>
+      <Container>
         <p className={styles.badge}>
           <span aria-hidden="true" className={styles.badgeDot} />
           AI . Engineering . Global enterprises

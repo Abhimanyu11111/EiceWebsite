@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
+import { pageSeo } from "@/config/seo";
+import { siteConfig } from "@/config/site";
+import { localBusinessSchemas, organizationSchema, schemaGraph, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -9,16 +13,22 @@ const poppins = Poppins({
   display: "swap",
 });
 
+// Site-wide defaults. Each page overrides these with buildMetadata().
 export const metadata: Metadata = {
-  title: "EICE | AI Engineered for Global Enterprise",
-  description:
-    "AI-powered products and enterprise technology solutions that help businesses automate work, optimise operations, and scale with confidence.",
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  title: {
+    default: `${siteConfig.name} | ${pageSeo.home.title}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: pageSeo.home.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={poppins.className}>
       <body>
+        <JsonLd data={schemaGraph(organizationSchema(), websiteSchema(), ...localBusinessSchemas())} />
         <SmoothScroll />
         {children}
       </body>

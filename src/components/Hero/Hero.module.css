@@ -1,47 +1,13 @@
-.hero {
-  position: relative;
-  height: 550px;
-  overflow: hidden;
-  background: #f8fbfd;
-}
-
 /*
- * The artwork is 2924 x 1120 and hugs the right edge. It is 1437px wide at 1440 (the design),
- * grows with the screen up to 1655px (~1.15x) so the globe stays near the text on wide screens,
- * then stops growing; anything wider shows the near-white sky colour behind a soft left fade.
- * Past 1920 it hugs the right edge of a centred 1920 column instead of the screen, so the globe
- * stays beside the text on ultra-wide screens; its right edge then fades into the page colour.
- * When it is taller than the section, 15% of the extra is trimmed from the top (keeps the
- * top badge clear) and 85% from the water at the bottom.
+ * The artwork (2924 x 1120) is the section background. The section keeps the same
+ * shape as the artwork (1120 / 2924 = 38.3vw), so the whole picture shows at every
+ * width, just like the design. The text sits in the normal centred container.
  */
-.imageFrame {
-  --frame-width: clamp(1437px, 100vw, 1655px);
-  --frame-inset: max(0px, (100vw - 1920px) / 2);
-
-  position: absolute;
-  z-index: 1;
-  top: calc((550px - var(--frame-width) * 1120 / 2924) * 0.15);
-  right: var(--frame-inset);
-  width: var(--frame-width);
-  aspect-ratio: 2924 / 1120;
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 120px,
-    #000 calc(100% - min(var(--frame-inset), 80px)),
-    transparent
-  );
-}
-
-.image {
-  object-fit: cover;
-  object-position: right center;
-}
-
-.content {
-  position: relative;
-  z-index: 2;
-  padding-top: 79px;
+.hero {
+  display: flex;
+  height: clamp(550px, 38.3vw, 735px);
+  align-items: center;
+  background: #f8fbfd url("/assets/images/hero-bg.webp") center / cover no-repeat;
 }
 
 .badge {
@@ -150,12 +116,6 @@
   }
 }
 
-@keyframes settleIn {
-  from {
-    opacity: 0;
-    transform: scale(1.06);
-  }
-}
 
 .badge,
 .title,
@@ -176,9 +136,6 @@
   animation-delay: 360ms;
 }
 
-.image {
-  animation: settleIn 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
 
 /* Shine that sweeps across the primary button on hover. */
 .primaryButton {
@@ -215,35 +172,18 @@
   .badge,
   .title,
   .description,
-  .actions,
-  .image {
+  .actions {
     animation: none;
   }
 }
 
-/* Small screens: the artwork sits under the copy as its own band instead of behind it. */
+/* Small screens: the artwork sits under the text as a band at the bottom of the section. */
 @media (max-width: 900px) {
   .hero {
-    display: flex;
     height: auto;
-    flex-direction: column;
-  }
-
-  .content {
-    order: 1;
-    padding-top: 40px;
-  }
-
-  .imageFrame {
-    position: relative;
-    order: 2;
-    top: auto;
-    right: auto;
-    width: 100%;
-    height: 320px;
-    margin-top: 8px;
-    aspect-ratio: auto;
-    mask-image: linear-gradient(180deg, transparent, #000 64px);
+    padding: 40px 0 340px;
+    background-position: right bottom;
+    background-size: auto 320px;
   }
 
   .title {
@@ -299,7 +239,8 @@
     height: 13px;
   }
 
-  .imageFrame {
-    height: 260px;
+  .hero {
+    padding-bottom: 280px;
+    background-size: auto 260px;
   }
 }
