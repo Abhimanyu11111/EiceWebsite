@@ -1,0 +1,465 @@
+/*
+ * Floating "Talk to an Expert" button and its glass enquiry panel.
+ * Sizes come from the design screenshots (taken at 75% zoom, so scaled by 4/3).
+ */
+.widget {
+  position: fixed;
+  z-index: 40;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 19px;
+  /* Only the button and panel take clicks, not the empty area around them. */
+  pointer-events: none;
+}
+
+.widget > * {
+  pointer-events: auto;
+}
+
+/* ---------- Floating button ---------- */
+
+.toggle {
+  display: inline-flex;
+  height: 45px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 23px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(44, 70, 123, 0.96), rgba(1, 32, 96, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 8px 20px rgba(1, 32, 96, 0.3);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  white-space: nowrap;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.toggle:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 12px 26px rgba(1, 32, 96, 0.36);
+  transform: translateY(-2px);
+}
+
+.toggle:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.toggleIcon {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------- Glass panel ---------- */
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+.panel {
+  position: relative;
+  width: 450px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+  padding: 28px 24px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.78) 0%, rgba(238, 241, 246, 0.72) 55%, rgba(232, 237, 244, 0.78) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(197, 207, 221, 0.45),
+    0 24px 60px rgba(15, 23, 42, 0.2);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  transform-origin: bottom right;
+  animation: panelIn 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 17px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+}
+
+.close:hover {
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.close:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 1px;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- Form ---------- */
+
+.title {
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.subtitle {
+  margin-top: 3px;
+  padding-right: 24px;
+  color: var(--body);
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field > span {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #fff;
+  font-size: 13px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.field input,
+.field select {
+  height: 41px;
+  padding: 0 15px;
+}
+
+.field select {
+  appearance: none;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 7'%3E%3Cpath d='M1 1l5.5 5L12 1' fill='none' stroke='%2364748b' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")
+    right 15px center / 11px 6px no-repeat;
+  cursor: pointer;
+}
+
+/* The "Select a service" prompt looks like a placeholder. */
+.field select:invalid,
+.field select:has(option[value=""]:checked) {
+  color: var(--muted);
+}
+
+.field textarea {
+  height: 75px;
+  padding: 12px 15px;
+  resize: none;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  border-color: var(--navy);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(1, 32, 96, 0.18);
+}
+
+.submit {
+  display: inline-flex;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--navy);
+  box-shadow: 0 6px 14px rgba(1, 32, 96, 0.25);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.submit:hover {
+  box-shadow: 0 10px 20px rgba(1, 32, 96, 0.32);
+  transform: translateY(-1px);
+}
+
+.submit:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.submitArrow {
+  width: 18px;
+  height: 17px;
+  transition: transform 160ms ease;
+}
+
+.submit:hover .submitArrow {
+  transform: translateX(3px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.divider::before,
+.divider::after {
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+/* ---------- Contact options ---------- */
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 13px;
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 19px;
+}
+
+.option {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 0 12px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.optionList .option {
+  min-height: 52px;
+  padding: 0 15px 0 12px;
+  border: 1px solid var(--border-soft);
+}
+
+.option:hover {
+  box-shadow: 0 8px 18px rgba(1, 32, 96, 0.12);
+  transform: translateY(-1px);
+}
+
+.option:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.optionIcon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+/* The WhatsApp PNG has a transparent margin, so it is drawn a little larger. */
+.whatsapp {
+  width: 28px;
+  height: 28px;
+  margin: -2px;
+}
+
+.phone {
+  color: #000;
+}
+
+.optionText {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.optionTitle {
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.optionSub {
+  color: var(--body);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.optionArrow {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--navy);
+  transition: transform 160ms ease;
+}
+
+.option:hover .optionArrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Thank-you screen ---------- */
+
+.thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: -10px;
+  text-align: center;
+}
+
+.tick {
+  display: flex;
+  width: 96px;
+  height: 96px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  border: 1.5px solid #16a34a;
+  border-radius: 50%;
+  color: #15803d;
+  background: #f0fdf4;
+}
+
+.tickIcon {
+  width: 52px;
+  height: 52px;
+}
+
+.thanksTitle {
+  margin-top: 30px;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  outline: none;
+}
+
+.thanksText {
+  margin-top: 23px;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.thanksNote {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.rule {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0 0;
+  border: 0;
+  background: var(--line);
+}
+
+.thanks .optionTitle,
+.thanks .optionSub {
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .widget {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    gap: 12px;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - 96px);
+    padding: 24px 18px 18px;
+  }
+
+  .toggle {
+    height: 44px;
+    padding: 0 16px 0 14px;
+    font-size: 14px;
+  }
+
+  .optionGrid {
+    grid-template-columns: 1fr;
+  }
+}

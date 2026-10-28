@@ -28,4 +28,14 @@ export const pageSeo = {
     changeFrequency: "weekly",
     priority: 1,
   },
+  products: {
+    path: "/products",
+    // TODO (SEO team): final title, description and keywords.
+    title: "AI Driven Enterprise Software Products",
+    description:
+      "Enterprise software products for hospitality, logistics, IT and security, and AI automation: EICE Rise, Easylogy, EICE SmartFit, iSyncDrive, Verilock, InfraSight, AskEICE and more.",
+    keywords: [],
+    changeFrequency: "weekly",
+    priority: 0.9,
+  },
 } satisfies Record<string, PageSeo>;

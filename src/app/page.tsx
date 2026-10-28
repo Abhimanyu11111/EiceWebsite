@@ -8,7 +8,6 @@ import Services from "@/components/Services/Services";
 import SiteFooter from "@/components/SiteFooter/SiteFooter";
 import SiteHeader from "@/components/SiteHeader/SiteHeader";
 import Videos from "@/components/Videos/Videos";
-import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 import JsonLd from "@/components/JsonLd/JsonLd";
 import { pageSeo } from "@/config/seo";
 import { schemaGraph, webPageSchema } from "@/lib/schema";
@@ -38,7 +37,6 @@ export default function Home() {
         <Contact />
       </main>
       <SiteFooter />
-      <WhatsAppButton />
     </>
   );
 }

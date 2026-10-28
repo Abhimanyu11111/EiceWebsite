@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "@/components/Icons/Icons";
 import styles from "./ProductsMenu.module.css";
 
@@ -75,10 +76,10 @@ export default function ProductsMenu({ className }: { className?: string }) {
           Explore AI-powered products and business platforms built to simplify workflows, optimise operations, and
           solve industry-specific challenges.
         </p>
-        <a className={styles.exploreAll} href="#products">
+        <Link className={styles.exploreAll} href="/products">
           Explore All Products
           <ArrowRight className={styles.exploreArrow} strokeWidth={2} />
-        </a>
+        </Link>
       </div>
 
       <div className={styles.catalog}>

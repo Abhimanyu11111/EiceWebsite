@@ -1,0 +1,110 @@
+/* Light blue band: the designer's arc artwork under a pale blue wash, as on the products hub design. */
+.industryFit {
+  padding: 52px 0 50px;
+  border-top: 1px solid #dce5f4;
+  background:
+    linear-gradient(rgba(224, 239, 252, 0.88), rgba(224, 239, 252, 0.88)),
+    #b0caff url("/assets/images/industry-fit-bg.png") center / cover no-repeat;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin: 39px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  height: 95px;
+  align-items: center;
+  gap: 16px;
+  padding: 0 21px 0 23px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(1, 32, 96, 0.14);
+  transform: translateY(-3px);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.icon {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--navy);
+  background: #e6f7fe;
+}
+
+.iconSvg {
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  min-width: 0;
+  flex: 1;
+  margin-bottom: 2px;
+}
+
+.name {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.products {
+  margin-top: 2px;
+  color: var(--body);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.arrow {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--muted);
+  transition: transform 160ms ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .industryFit {
+    padding: 40px 0;
+  }
+
+  .card {
+    height: auto;
+    padding: 20px;
+  }
+}

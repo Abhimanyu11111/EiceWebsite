@@ -1,0 +1,174 @@
+/* Sizes measured from "Product hubpage Final.pdf" at 1440px. */
+.card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(1, 32, 96, 0.12);
+  transform: translateY(-3px);
+}
+
+.media {
+  position: relative;
+  height: 144px;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 19px 21px 17px;
+}
+
+.name {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+.accent {
+  color: var(--navy);
+}
+
+.description {
+  margin-top: 7px;
+  color: var(--body);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+/* The whole card is clickable through its link. */
+.link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.card:has(.link:focus-visible) {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.linkArrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 160ms ease;
+}
+
+.card:hover .linkArrow,
+.card:hover .footerArrow {
+  transform: translateX(3px);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- compact: Enterprise IT & Security ---------- */
+
+.compact {
+  border-color: #e8edf3;
+}
+
+.compact .body {
+  padding-top: 21px;
+}
+
+.compact .description {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/* ---------- feature: AI & Automation ---------- */
+
+.feature {
+  border-radius: 10px;
+}
+
+.feature .media {
+  height: 152px;
+}
+
+.feature .body {
+  min-height: 156px;
+  padding: 28px 15px 12px;
+}
+
+.feature .description {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.footer {
+  display: flex;
+  height: 53px;
+  align-items: center;
+  padding: 0 15px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.footer .link {
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.footerArrow {
+  width: 17px;
+  height: 16px;
+  transition: transform 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image {
+    transition: none;
+  }
+}

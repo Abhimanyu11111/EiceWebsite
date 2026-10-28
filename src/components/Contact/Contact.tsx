@@ -1,22 +1,58 @@
+import type { ReactNode } from "react";
 import Container from "@/components/Container/Container";
-import { ArrowRight } from "@/components/Icons/Icons";
+import { ArrowRight, CheckCircle } from "@/components/Icons/Icons";
 import Reveal from "@/components/Reveal/Reveal";
 import styles from "./Contact.module.css";
 
-export default function Contact() {
+const homeTitle = (
+  <>
+    Let&apos;s Solve Your Next
+    <br />
+    Challenge.
+  </>
+);
+
+const homeDescription =
+  "Tell us what your business needs. We'll help you explore the right product or technology solution.";
+
+/** Enquiry section. The home page uses the defaults; other pages pass their own copy. */
+export default function Contact({
+  title = homeTitle,
+  description = homeDescription,
+  points,
+  variant,
+}: {
+  title?: ReactNode;
+  description?: string;
+  /** Short reassurances shown with a tick under the description. */
+  points?: string[];
+  variant?: "products";
+}) {
   return (
-    <section aria-labelledby="contact-title" className={styles.contact} id="contact">
+    <section
+      aria-labelledby="contact-title"
+      className={variant ? `${styles.contact} ${styles[variant]}` : styles.contact}
+      id="contact"
+    >
       <Container className={styles.inner}>
         <Reveal>
           <p className={styles.eyebrow}>Contact</p>
           <h2 className={styles.title} id="contact-title">
-            Let&apos;s Solve Your Next
-            <br />
-            Challenge.
+            {title}
           </h2>
-          <p className={styles.description}>
-            Tell us what your business needs. We&apos;ll help you explore the right product or technology solution.
-          </p>
+          <p className={styles.description}>{description}</p>
+          {points?.length ? (
+            <ul className={styles.points}>
+              {points.map((point) => (
+                <li key={point}>
+                  <span className={styles.pointIcon}>
+                    <CheckCircle className={styles.pointSvg} />
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </Reveal>
         <Reveal delay={120}>
           <form className={styles.form}>

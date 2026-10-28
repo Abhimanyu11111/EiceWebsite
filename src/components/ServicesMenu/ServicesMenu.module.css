@@ -1,0 +1,277 @@
+/*
+ * Mega menu under "Services". Same frame as the Products menu, measured from the
+ * design screenshots (taken at 67% zoom, so scaled by 1.5):
+ * intro 279 | 32 | catalog 715 (+16 scrollbar gutter) | 24 | featured card 236 | 25 = 1327px.
+ */
+.menu {
+  display: grid;
+  width: min(calc(100vw - 4px), 1327px);
+  height: min(742px, calc(100vh - 96px));
+  grid-template-columns: 279px 763px 260px;
+  padding-right: 25px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 207, 221, 0.6);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.14);
+}
+
+/* ---------- Intro (left) ---------- */
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 29px 20px 0 29px;
+  background: url("/assets/images/cards/light-blue-card-bg.png") center top / cover no-repeat;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.heading {
+  max-width: 215px;
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.introText {
+  max-width: 215px;
+  margin-top: 22px;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.exploreAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.exploreArrow {
+  width: 18px;
+  height: 17px;
+  transition: transform 200ms ease;
+}
+
+.exploreAll:hover .exploreArrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Catalog (middle, scrolls) ---------- */
+
+.catalog {
+  margin-left: 32px;
+  padding-right: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+}
+
+.catalog::-webkit-scrollbar {
+  width: 6px;
+}
+
+.catalog::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--border);
+}
+
+.row {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.label {
+  color: var(--cyan);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+/* The two top groups, side by side with a divider. */
+.rowMain {
+  display: grid;
+  grid-template-columns: 359px minmax(0, 1fr);
+}
+
+.leftColumn .list {
+  padding-right: 39px;
+  border-right: 1px solid var(--border-soft);
+}
+
+.rightColumn {
+  padding-left: 31px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* The lower groups: two services per row, on the same columns as the groups above. */
+.grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 46px 70px;
+  margin-top: 20px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 15px;
+  align-items: start;
+  column-gap: 14px;
+  color: inherit;
+}
+
+.icon {
+  border-radius: 8px;
+  transition: transform 250ms ease;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  transition: color 200ms ease;
+}
+
+.description {
+  color: var(--body);
+  font-size: 12px;
+  line-height: 19px;
+}
+
+/* Lines up with the service name. */
+.arrow {
+  width: 15px;
+  height: 14px;
+  margin-top: 5px;
+  color: var(--navy);
+  transition: transform 200ms ease;
+}
+
+.item:hover .name {
+  color: var(--navy);
+}
+
+.item:hover .icon {
+  transform: scale(1.06);
+}
+
+.item:hover .arrow {
+  transform: translateX(3px);
+}
+
+.item:focus-visible {
+  border-radius: 8px;
+  outline: 2px solid var(--navy);
+  outline-offset: 4px;
+}
+
+/* ---------- Featured card (right) ---------- */
+
+.featured {
+  display: flex;
+  height: 642px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: start;
+  margin: 44px 0 0 24px;
+  padding: 29px 21px 0;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--navy-deep);
+}
+
+.featuredLabel {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.featuredName {
+  margin-top: 18px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 33px;
+}
+
+.featuredText {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.featuredButton {
+  display: inline-flex;
+  width: 194px;
+  height: 45px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 62px;
+  border-radius: 6px;
+  color: var(--navy);
+  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.featuredButton:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.featuredButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.featuredArrow {
+  width: 18px;
+  height: 17px;
+}
+
+.featuredImage {
+  width: 194px;
+  height: 167px;
+  margin-top: 37px;
+  border-radius: 8px;
+  object-fit: cover;
+}

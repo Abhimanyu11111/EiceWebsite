@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronRight } from "@/components/Icons/Icons";
 import styles from "./MobileNav.module.css";
 
 const links = [
-  { label: "Products", href: "#products" },
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Resources", href: "#videos" },
+  { label: "Products", href: "/products" },
+  { label: "Services", href: "/#services" },
+  { label: "Industries", href: "/#industries" },
+  { label: "Resources", href: "/#videos" },
   { label: "About Us", href: "#" },
 ];
 
@@ -41,10 +42,10 @@ export default function MobileNav() {
         <ul>
           {links.map((link) => (
             <li key={link.label}>
-              <a className={styles.link} href={link.href} onClick={() => setOpen(false)}>
+              <Link className={styles.link} href={link.href} onClick={() => setOpen(false)}>
                 {link.label}
                 <ChevronRight className={styles.chevron} />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

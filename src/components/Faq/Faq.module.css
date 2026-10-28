@@ -1,0 +1,123 @@
+/* Measured from "Product hubpage Final.pdf" at 1440px. */
+.faq {
+  padding: 37px 0 36px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+/* The design sets this block 7px in from the page column. */
+.inner {
+  padding-left: 7px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 46px;
+}
+
+.item {
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+  transition: box-shadow 200ms ease;
+}
+
+.item:hover,
+.item[open] {
+  box-shadow: 0 8px 20px rgba(1, 32, 96, 0.08);
+}
+
+.question {
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 23px;
+  border-radius: 8px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.question::-webkit-details-marker {
+  display: none;
+}
+
+.question:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.questionText {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+/* Plus sign that turns into a minus when the answer is open. */
+.icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.icon::before,
+.icon::after {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--cyan);
+  content: "";
+  transition: transform 220ms ease;
+}
+
+.icon::after {
+  transform: rotate(90deg);
+}
+
+.item[open] .icon::after {
+  transform: rotate(0deg);
+}
+
+.answer {
+  max-width: 1000px;
+  padding: 0 23px 22px;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media (max-width: 600px) {
+  .faq {
+    padding: 40px 0;
+  }
+
+  .inner {
+    padding-left: 0;
+  }
+
+  .list {
+    margin-top: 28px;
+  }
+
+  .question {
+    padding: 16px 18px;
+  }
+
+  .questionText {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .answer {
+    padding: 0 18px 18px;
+  }
+}

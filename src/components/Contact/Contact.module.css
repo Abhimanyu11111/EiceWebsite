@@ -158,3 +158,66 @@
     margin-top: 24px;
   }
 }
+
+/* ---------- Products hub copy ("Product hubpage Final.pdf") ---------- */
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 46px;
+}
+
+.points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #424241;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+}
+
+.pointIcon {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #15803d;
+  background: #f0fdf4;
+}
+
+.pointSvg {
+  width: 18px;
+  height: 18px;
+}
+
+.products {
+  padding-bottom: 47px;
+}
+
+.products .title {
+  margin-top: 10px;
+  letter-spacing: -0.032em;
+}
+
+.products .description {
+  max-width: 432px;
+  margin-top: 13px;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+@media (max-width: 600px) {
+  .products .description {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .points {
+    margin-top: 28px;
+  }
+}

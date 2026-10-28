@@ -60,6 +60,45 @@ export function webPageSchema(page: { path: string; title: string; description: 
   };
 }
 
+/** Question-and-answer list, e.g. a page's FAQ section. */
+/** A service EICE offers, e.g. one of the /services/<slug> pages. */
+export function serviceSchema(service: { path: string; name: string; description: string }) {
+  return {
+    "@type": "Service",
+    "@id": absoluteUrl(`${service.path}#service`),
+    name: service.name,
+    description: service.description,
+    url: absoluteUrl(service.path),
+    provider: { "@id": organizationId },
+    areaServed: ["United States", "Europe", "Middle East", "Africa", "Asia"],
+  };
+}
+
+export function faqPageSchema(path: string, faqs: { question: string; answer: string }[]) {
+  return {
+    "@type": "FAQPage",
+    "@id": absoluteUrl(`${path}#faq`),
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+}
+
+/** Breadcrumb trail, from the home page down to the current page. */
+export function breadcrumbSchema(items: { name: string; path: string }[]) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
 /** Wraps several entities into one JSON-LD document. */
 export function schemaGraph(...entities: object[]) {
   return { "@context": "https://schema.org", "@graph": entities };

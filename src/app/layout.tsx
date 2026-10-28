@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import JsonLd from "@/components/JsonLd/JsonLd";
 import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
+import TalkToExpert from "@/components/TalkToExpert/TalkToExpert";
 import { pageSeo } from "@/config/seo";
 import { siteConfig } from "@/config/site";
 import { localBusinessSchemas, organizationSchema, schemaGraph, websiteSchema } from "@/lib/schema";
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <JsonLd data={schemaGraph(organizationSchema(), websiteSchema(), ...localBusinessSchemas())} />
         <SmoothScroll />
         {children}
+        <TalkToExpert />
       </body>
     </html>
   );

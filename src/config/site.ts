@@ -22,6 +22,11 @@ export const siteConfig = {
   email: undefined as string | undefined,
   telephone: undefined as string | undefined,
 
+  // TODO (business team): WhatsApp chat link with the number, e.g. "https://wa.me/919999999999".
+  whatsappUrl: "https://wa.me/",
+  // TODO (business team): meeting booking link (Calendly, HubSpot, Teams...). Falls back to the contact form.
+  bookingUrl: "#contact",
+
   // Same offices as the footer's "Our Global Presence".
   offices: [
     {

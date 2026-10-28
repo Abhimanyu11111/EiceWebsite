@@ -117,6 +117,34 @@
   margin-bottom: 7px;
 }
 
+.industryFit .eyebrow {
+  letter-spacing: 0.08em;
+}
+
+.industryFit .title {
+  margin-top: 8px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.industryFit .row {
+  margin-top: 12px;
+}
+
+.industryFit .description {
+  max-width: 1180px;
+}
+
+.faq .eyebrow {
+  letter-spacing: 0.075em;
+}
+
+.faq .title {
+  margin-top: 9px;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+}
+
 .videos .title {
   font-weight: 700;
   letter-spacing: -0.033em;

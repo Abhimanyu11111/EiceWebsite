@@ -1,0 +1,207 @@
+/* Hero of the products hub. Measured from "Product hubpage Final.pdf" at 1440px. */
+.hero {
+  padding: 39px 0 68px;
+  background: var(--page);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 622px;
+  align-items: start;
+  gap: 32px;
+}
+
+.title {
+  color: var(--ink);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 62px;
+  letter-spacing: -0.034em;
+}
+
+.description {
+  max-width: 470px;
+  margin-top: 16px;
+  color: var(--body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  width: 264px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--navy);
+  box-shadow: 0 6px 14px rgba(1, 32, 96, 0.28);
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+/* Same shine as the home hero button. */
+.button::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  content: "";
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+}
+
+.button:hover {
+  box-shadow: 0 10px 22px rgba(1, 32, 96, 0.34);
+  transform: translateY(-2px);
+}
+
+.button:hover::after {
+  transform: translateX(120%);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.arrow {
+  width: 19px;
+  height: 18px;
+  transition: transform 160ms ease;
+}
+
+.button:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Photo panels (604 x 300 on the design) ---------- */
+
+.art {
+  position: relative;
+  max-width: 604px;
+  margin-right: 18px;
+  aspect-ratio: 604 / 300;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  width: 26.5%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 14px 18px 30px rgba(15, 23, 42, 0.22);
+  /* 3D tilt: the top edge stays level, the right side comes towards the viewer. */
+  transform: perspective(700px) rotateY(-18deg);
+  transform-origin: 50% 0;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Soft light reflection across each panel. */
+.panel::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 45%);
+  content: "";
+  pointer-events: none;
+}
+
+.art:hover .panel {
+  transform: perspective(700px) rotateY(-10deg);
+}
+
+/* Left panels sit on top of the ones to their right. */
+.panel:nth-child(1) {
+  z-index: 4;
+  left: 0;
+}
+
+.panel:nth-child(2) {
+  z-index: 3;
+  left: 24.83%;
+}
+
+.panel:nth-child(3) {
+  z-index: 2;
+  left: 49.5%;
+}
+
+.panel:nth-child(4) {
+  z-index: 1;
+  left: 73.5%;
+}
+
+/* Each photo is 537 x 302 on the design: 335% of its 160px panel. */
+.photo {
+  position: absolute;
+  top: 0;
+  width: 335.4%;
+  max-width: none;
+  height: auto;
+}
+
+/* Entrance, same timing as the home hero. */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+.content,
+.art {
+  animation: riseIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.art {
+  animation-delay: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .art {
+    animation: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .art {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 32px 0 48px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 264px;
+  }
+}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/Container/Container";
 import { ArrowRight, ChevronRight, PinIcon } from "@/components/Icons/Icons";
 import FooterColumn from "./FooterColumn";
@@ -65,12 +66,12 @@ const presence = [
 
 const legalLinks = ["Privacy Policy", "Terms of Use", "Cookie Policy", "Sitemap"];
 
-function ViewAll({ label }: { label: string }) {
+function ViewAll({ label, href = "#" }: { label: string; href?: string }) {
   return (
-    <a className={styles.viewAll} href="#">
+    <Link className={styles.viewAll} href={href}>
       {label}
       <ArrowRight className={styles.viewAllArrow} strokeWidth={2.2} />
-    </a>
+    </Link>
   );
 }
 
@@ -122,7 +123,7 @@ export default function SiteFooter() {
               </li>
             ))}
           </ul>
-          <ViewAll label="View all products" />
+          <ViewAll href="/products" label="View all products" />
         </FooterColumn>
 
         {linkColumns.map((column) => (

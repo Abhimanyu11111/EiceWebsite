@@ -1,0 +1,114 @@
+/* Measured from "Product hubpage Final.pdf" at 1440px: banner 1216 x 402. */
+.section {
+  padding: 44px 0 58px;
+  border-bottom: 1px solid var(--line);
+  background: var(--page);
+}
+
+/* Designer's navy wave artwork (1215 x 403). */
+.banner {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) 454px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 49px 48px 54px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #1f3a5a url("/assets/images/products-hub/engineering-banner-bg.webp") center / cover no-repeat;
+}
+
+.eyebrow {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 15px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  margin-top: 15px;
+  color: #dbe8fb;
+  font-size: 15px;
+  line-height: 24.5px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 21px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+}
+
+.link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.arrow {
+  width: 14px;
+  height: 13px;
+  transition: transform 160ms ease;
+}
+
+.link:hover .arrow {
+  transform: translateX(3px);
+}
+
+.media {
+  position: relative;
+  height: 272px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+@media (max-width: 1100px) {
+  .banner {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    height: auto;
+    aspect-ratio: 454 / 272;
+  }
+
+  .title br {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .banner {
+    padding: 32px 20px;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
